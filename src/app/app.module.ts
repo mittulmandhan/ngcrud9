@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { CreateComponent } from './create/create.component';
 import { UsersComponent } from './users/users.component';
 import { UserService } from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { UserService } from './services/user.service';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [UserService],
