@@ -1,1 +1,26 @@
-<p>users works!</p>
+<h2>Users List</h2>
+<hr>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Contact</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of data">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.contact}}</td>
+            <td>
+                <a [routerLink]="['/edit',item.id]" class="btn btn-primary">Edit</a> &nbsp;
+                <a (click)="DeleteUser(item.id)" class="btn btn-warning">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
