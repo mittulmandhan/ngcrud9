@@ -11,13 +11,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  // when calling a rest API we need to determine the type of data we are sending
+  // when calling a rest API we need to determine the type of content we are sending
   // for that purpose we define HttpHeaders
   headers: HttpHeaders;
 
   // HttpClient service is used to make ajax request in angular
   constructor(private httpClient: HttpClient) {
-    this.headers = new HttpHeaders({'content-type': 'application/ json'});
+    this.headers = new HttpHeaders({'content-type': 'application/json'});
   }
 
   // GetUsers method should be called when we are going to subscribe jsn in the component level
