@@ -10,23 +10,41 @@ import { Router, ActivatedRoute } from '@angular/router';
   styles: []
 })
 export class CreateComponent implements OnInit {
+  id: number;
   user: User;
-  constructor(private userService: UserService, private router: Router) {
+
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
     this.user = new User();
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = params.id;
+      if (this.id !== undefined) {
+        this.userService.GetUser(this.id).subscribe(res => {
+          console.log(res);
+          this.user = res;
+        });
+      }
+    });
   }
-
   SaveData(form: NgForm) {
     if (form.valid) {
-      this.userService.AddUser(this.user).subscribe(res => {
-        console.log(res);
-        if (res.status === 201) {
-          this.router.navigate(['/']);
-        }
-      });
+      if (this.id > 0) {
+        this.userService.UpdateUser(this.user).subscribe(res => {
+          console.log(res);
+          if (res.status === 200) {
+            this.router.navigate(['/']);
+          }
+        });
+      } else {
+        this.userService.AddUser(this.user).subscribe(res => {
+          console.log(res);
+          if (res.status === 201) {
+            this.router.navigate(['/']);
+          }
+        });
+      }
     }
   }
-
 }
