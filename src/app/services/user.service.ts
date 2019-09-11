@@ -39,7 +39,7 @@ export class UserService {
 
   UpdateUser(user: User): Observable<HttpResponse<any>> {
     // tslint:disable-next-line:max-line-length
-    return this.httpClient.post<HttpResponse<any>>(environment.apiAddress + '/users/' + id, JSON.stringify(user), {headers: this.headers, observe: 'response'});
+    return this.httpClient.put<HttpResponse<any>>(environment.apiAddress + '/users/' + user.id, JSON.stringify(user), {headers: this.headers, observe: 'response'});
   }
 
   DeleteUser(id: number): Observable<any> {
