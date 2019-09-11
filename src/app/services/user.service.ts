@@ -38,6 +38,6 @@ export class UserService {
   }
 
   DeleteUser(id: number): Observable<any> {
-    return this.httpClient.delete<any>(environment.apiAddress + '/users/' + id);
+    return this.httpClient.delete<any>(environment.apiAddress + '/users/' + id, { observe: 'response'});
   }
 }
