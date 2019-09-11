@@ -2,6 +2,6 @@
 export class User {
     id: number;
     name: string;
-    addres: string;
+    address: string;
     contact: string;
 }
